@@ -8,10 +8,10 @@ const path = require('path');
 let Datastore = require('nedb'), db = new Datastore({ filename: 'data.db', autoload: true });
 
 const vapidKeys = {
-    publicKey: 'BBALy4Gfyfa4bsyVdjrOvTSBQeTBfM-wsn2sDKJ4kCsUa-b0gju-noVq5FxX32d52y60OSJd-lRi6XoFilGxQWM',
-    privateKey: 'kZV5GNRa-rKau-5BJ9T6Y0hB0KKD4bUgzM3rEcU_Hro'
+    publicKey: 'BETUhM1H_IUagzg88kdEY95I5TeKUC8ORFHA1j03g0dRptBzguQmuImtsX0pPZHM6Xz6PAL9CJiOTOQN5ONqnms',
+    privateKey: 'ou0hIOQDutgAM8WT7-RbIFiiPrjlYukNanbA7BT5w20'
 };
-webpush.setVapidDetails('https://py-nodeapi.herokuapp.com', vapidKeys.publicKey, vapidKeys.privateKey);
+webpush.setVapidDetails('https://py-pushapi.herokuapp.com/', vapidKeys.publicKey, vapidKeys.privateKey);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -162,6 +162,6 @@ app.post('/sendNotification', function (req, res) {
 app.get('/test', (req, res) => {
     res.send('working!!');
 })
-app.use(express.static('pwa'));
+app.use(express.static('public'));
 
 app.listen(port, () => console.log(`NodeAPI listening at :${port}`));
